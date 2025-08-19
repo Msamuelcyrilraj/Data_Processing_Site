@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISPLAY</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Data Table</h1>
+    <div>
+        
+    {% if tables %}
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
+    {% else %}
+        <p>No data found</p>
+    {% endif %}
+
+    </div>
+
+    <h2> Data processing</h2>
+    <a href="{{ url_for('process_data', action ='fill_with_zero')}}">Fill NaN with 0</a>|
+    <a href="{{ url_for('process_data', action ='fill_mean')}}">Fill Nan with mean</a>|
+    <a href="{{ url_for('process_data', action ='drop')}}">Drop the Nan</a>
+</body>
+</html>
